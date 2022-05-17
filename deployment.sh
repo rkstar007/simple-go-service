@@ -4,16 +4,7 @@
 
 INIT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DOCKER_USER="$1"
-#read -s "Please Enter password: " DOCKER_PASS
-
-DOCKER_PASS="$(cat /tmp/password.txt)"
-
-### Exit Script if not arguments is passed
-if [[ ! -f  /tmp/password.txt ||  $# -eq 0  ]]; then
-    echo "Please specify password in /tmp/password.txt file"
-    echo "example : sh deployment.sh rkstar007"
-    exit 1
-fi
+read -s -p "Please Enter password: " DOCKER_PASS
 
 function docker_login {
    docker login --username="${DOCKER_USER}" --password="${DOCKER_PASS}"
