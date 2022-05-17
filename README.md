@@ -27,7 +27,7 @@ IF you are running building and running this application on cloud you need to ch
 
 ## Run Following commands to make your application up and running
 
-Note: While running shell script pass your docker image repository with as currently I am using `rkstar007` as repository name hosted in docker hub.
+Note: While running shell script pass your docker image repository currenly in my shell script I am using `rkstar007` as repository name which is hosted in docker hub.
 
 1. Automatic Deployment 
 
