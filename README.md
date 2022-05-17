@@ -1,4 +1,6 @@
-# Go App
+# How to Run Application
+
+$ go run main.go ( CLI )
 
 Env variable:-
 Setup the env variable in the specified format to start the application.
@@ -43,6 +45,8 @@ $ ./deployment.sh rkstar007
 
 ###  K8s Deployment ( Manual Process )
 
+Use following steps to build app:
+
 $ `docker-compose -f docker-compose.yaml  up --build -d`
 
 $ `docker tag simple-go-service_app <Your-DockerRepositry-Name>/simple-go-service_app`
@@ -51,17 +55,23 @@ $ `docker push <Your-DockerRepositry-Name>/simple-go-service_app`
 
 Note:  Change image in values.yaml file of helm chart or k8s deployment and sts accordingly.
 
+Use following steps to deploy app in k3s cluster:
+
 $ `helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace`
 
 $ `kubectl apply -f k8s/deployment`
 
 ###  HELM  ( Manual Process )
 
+Use following steps to build app:
+
 $ `docker-compose -f docker-compose.yaml  up --build -d`
 
 $ `docker tag simple-go-service_app <Your-DockerRepositry-Name>/simple-go-service_app`
 
 $ `docker push <Your-DockerRepositry-Name>/simple-go-service_app`
+
+Use following steps to deploy app in k3s cluster:
 
 $ `helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace`
 
