@@ -91,6 +91,7 @@ NAME             CLASS    HOSTS   ADDRESS         PORTS   AGE
 go-web-app-ing   <none>   *       192.168.0.200   80      3m35s
 
 $ curl  -Iv  http://192.168.0.200/healthz
+```
 *   Trying 192.168.0.200...
 * TCP_NODELAY set
 * Connected to 192.168.0.200 (192.168.0.200) port 80 (#0)
@@ -112,5 +113,6 @@ Connection: keep-alive
 
 <
 * Connection #0 to host 192.168.0.200 left intact
-* Closing connection 0
+* Closing connection 0 
+```
 
