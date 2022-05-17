@@ -6,8 +6,9 @@ INIT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DOCKER_USER="$1"
 read -s -p "Please Enter password: " DOCKER_PASS
 
+
 function docker_login {
-   docker login --username="${DOCKER_USER}" --password="${DOCKER_PASS}"
+   echo "${DOCKER_PASS}" | docker login --username="${DOCKER_USER}" --password-stdin
 }
 
 function docker_build {
