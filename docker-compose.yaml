@@ -29,8 +29,6 @@ services:
     networks:
       - learning
 
-
-
 # Networks to be created to facilitate communication between containers
 networks:
   learning:
