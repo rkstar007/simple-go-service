@@ -1,4 +1,4 @@
-# How to Run Application Locally
+## How to Run Application Locally
 
 $ go run main.go ( CLI )
 
@@ -10,7 +10,7 @@ Setup the env variable in the specified format to start the application.
     Example:
     DATABASE_URL="host=localhost port=5432 user=admin password=password dbname=my_db sslmode=disable pool_min_conns=5 pool_max_conns=10"
 
-# Make sure that following Pre Requisite tools is running on your local or remote machine.
+## Make sure that following Pre Requisite tools is running on your local or remote machine.
 
 IF you are running building and running this application on cloud you need to change your storage class in values.yaml to GCP or AWS related.
 
@@ -27,7 +27,7 @@ IF you are running building and running this application on cloud you need to ch
 `golang` (1.16.14)
 
 
-# Run Following commands to make your application up and running
+## Run Following commands to make your application up and running
 
 Note: While running shell script pass your docker image repository currenly in my shell script I am using `rkstar007` as repository name which is hosted in docker hub.
 
@@ -79,14 +79,16 @@ $ `helm upgrade --install golang-app  helm/golang-app/ --set image.repository="r
 
 $ `helm upgrade --install postgres-app  helm/postgres-app/ --set image.repository="rkstar007"/simple-go-service_app,image.tag=14.2-alpine`
 
-# How to Access Application
+## How to Access Application
+
+Note: Replace Ingress IP address (192.168.0.200) with your Address
 
 $ kubectl get ing
 
-You can see output something like this,
+You can see output something like this:
+
 NAME             CLASS    HOSTS   ADDRESS         PORTS   AGE
 go-web-app-ing   <none>   *       192.168.0.200   80      3m35s
-
 
 $ curl  -Iv  http://192.168.0.200/healthz
 *   Trying 192.168.0.200...
