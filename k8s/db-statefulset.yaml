@@ -1,0 +1,52 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgresdb
+spec:
+  serviceName: postgresdb-svc # Match with postgres service name
+  replicas: 3
+  selector:
+    matchLabels:
+      app: postgresdb
+  template:
+    metadata:
+      labels:
+        app: postgresdb
+    spec:
+      containers:
+        - name: postgres-container
+          image: postgres:14.2-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_DB
+                  name: env
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_PASSWORD
+                  name: env
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_USER
+                  name: env
+            - name: PGDATA
+              value: "/var/lib/postgresql/data/pgdata"
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-data
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data
+      spec:
+        accessModes:
+          - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: "100Mi"

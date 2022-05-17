@@ -1,0 +1,49 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-app-deployment
+  labels:
+    app: go-web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: go-web-app # POD Spec name
+  template:
+    metadata:
+      labels:
+        app: go-web-app   # POD Spec name
+    spec:
+      containers:
+      - name: golang-container
+        image: rkstar007/simple-go-service_app:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "0.5"
+          limits:
+            memory: "128Mi"
+            cpu: "1"
+        ports:
+          - containerPort: 8080
+        env:
+          - name: DATABASE_URL
+            valueFrom:
+              configMapKeyRef:
+                key: DATABASE_URL
+                name: env
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 1
+          periodSeconds: 1
+          successThreshold: 1

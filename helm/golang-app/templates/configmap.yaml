@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: env
+data:
+    DATABASE_URL: host=postgresdb-svc port=5432 user=psql password=test123 dbname=test sslmode=disable pool_min_conns=5 pool_max_conns=10
+    POSTGRES_DB: test
+    POSTGRES_PASSWORD: test123
+    POSTGRES_USER: psql
+

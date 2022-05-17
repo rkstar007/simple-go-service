@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: go-app-ing
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /healthz
+          pathType: Prefix
+          backend:
+            service:
+              name: go-web-app-svc
+              port:
+                number: 8080s
+

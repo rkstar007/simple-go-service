@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresdb-svc
+  labels:
+    app: postgresdb
+spec:
+  selector:
+    app: postgresdb
+  clusterIP: None # Headless Service of DB replication consistency ( IF you Set replica to 1 then remove this line)
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+status:
+  loadBalancer: {}

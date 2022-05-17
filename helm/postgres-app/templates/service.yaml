@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Values.name }}-svc"
+  labels:
+    app: "{{ .Values.name }}"
+spec:
+  selector:
+    app: "{{ .Values.name }}"
+  clusterIP: None # Headless Service of DB replication consistency ( IF you Set replica to 1 then remove this line)
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+status:
+  loadBalancer: {}
