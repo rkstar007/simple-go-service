@@ -35,14 +35,14 @@ IF you are running building and running this application on cloud you need to ch
 
 Note: While running shell script pass your docker image repository currently in my shell script I am using `rkstar007` as repository name which is hosted in docker hub.
 
-1. Automatic Deployment 
+1. **Automatic Deployment** 
 
 $ ./deployment.sh rkstar007
 
 it's prompt for password then provide your docker hub registry password to login.
 
 
-2. Manually Deployment 
+2. **Manually Deployment** 
 
 ###  K8s Deployment ( Manual Process )
 
