@@ -31,7 +31,7 @@ IF you are running building and running this application on cloud you need to ch
 `golang` (1.16.14)
 
 
-## Run Following commands to make your application up and running with helm
+## Run Following commands to make your application scalable and up and running with kubernetes
 
 Note: While running shell script pass your docker image repository currently in my shell script I am using `rkstar007` as repository name which is hosted in docker hub.
 
