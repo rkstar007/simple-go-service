@@ -1,4 +1,4 @@
-## How to Run Application Locally
+## How to Run Application
 
 $ `go run main.go` ( CLI )
 
@@ -31,7 +31,7 @@ IF you are running building and running this application on cloud you need to ch
 `golang` (1.16.14)
 
 
-## Run Following commands to make your application up and running
+## Run Following commands to make your application up and running with helm
 
 Note: While running shell script pass your docker image repository currenly in my shell script I am using `rkstar007` as repository name which is hosted in docker hub.
 
@@ -67,8 +67,6 @@ $ `kubectl apply -f k8s/deployment`
 
 Use following steps to build app:
 
-Note: Replace `rkstar007` my docker hub registry name with your once.
-
 $ `docker-compose -f docker-compose.yaml  up --build -d`
 
 $ `docker tag simple-go-service_app <Your-DockerRepositry-Name>/simple-go-service_app`
@@ -79,9 +77,9 @@ Use following steps to deploy app in k3s cluster:
 
 $ `helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace`
 
-$ `helm upgrade --install golang-app  helm/golang-app/ --set image.repository="rkstar007"/simple-go-service_app,image.tag=latest`
+$ `helm upgrade --install golang-app  helm/golang-app/ --set image.repository="<Your-DockerRepositry-Name>"/simple-go-service_app,image.tag=latest`
 
-$ `helm upgrade --install postgres-app  helm/postgres-app/ --set image.repository="rkstar007"/simple-go-service_app,image.tag=14.2-alpine`
+$ `helm upgrade --install postgres-app  helm/postgres-app/ --set image.repository="<Your-DockerRepositry-Name>"/simple-go-service_app,image.tag=14.2-alpine`
 
 ## How to Access Application
 
