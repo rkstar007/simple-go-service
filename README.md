@@ -1,14 +1,18 @@
 ## How to Run Application Locally
 
-$ go run main.go ( CLI )
+$ `go run main.go` ( CLI )
 
-Env variable:-
+Env variable:- Specify Golang and Postgres Database related variables in .env file 
+
 Setup the env variable in the specified format to start the application.
 
     DATABASE_URL: "host=<db_host> port=<port> user=<db_user> password=<password> dbname=<database_name> pool_min_conns=<min_pool_connections> pool_max_conns=<max_pool_connections>"
 
     Example:
     DATABASE_URL="host=localhost port=5432 user=admin password=password dbname=my_db sslmode=disable pool_min_conns=5 pool_max_conns=10"
+
+$ `docker-compose -f docker-compose.yaml  up --build -d`
+
 
 ## Make sure that following Pre Requisite tools is running on your local or remote machine.
 
@@ -53,8 +57,6 @@ $ `docker tag simple-go-service_app <Your-DockerRepositry-Name>/simple-go-servic
 
 $ `docker push <Your-DockerRepositry-Name>/simple-go-service_app`
 
-Note:  Change image in values.yaml file of helm chart or k8s deployment and sts accordingly.
-
 Use following steps to deploy app in k3s cluster:
 
 $ `helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace`
@@ -64,6 +66,8 @@ $ `kubectl apply -f k8s/deployment`
 ###  HELM  ( Manual Process )
 
 Use following steps to build app:
+
+Note: Replace `rkstar007` my docker hub registry name with your once.
 
 $ `docker-compose -f docker-compose.yaml  up --build -d`
 
