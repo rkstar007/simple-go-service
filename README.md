@@ -33,17 +33,14 @@ IF you are running building and running this application on cloud you need to ch
 
 ## Run Following commands to make your application up and running with helm
 
-Note: While running shell script pass your docker image repository currenly in my shell script I am using `rkstar007` as repository name which is hosted in docker hub.
+Note: While running shell script pass your docker image repository currently in my shell script I am using `rkstar007` as repository name which is hosted in docker hub.
 
 1. Automatic Deployment 
 
-$ ./deployment.sh <Your Docker HUB Registry Name>
+$ ./deployment.sh rkstar007
 
 it's prompt for password then provide your docker hub registry password to login.
 
-Example:
-
-$ ./deployment.sh rkstar007
 
 2. Manually Deployment 
 
@@ -51,35 +48,35 @@ $ ./deployment.sh rkstar007
 
 Use following steps to build app:
 
-$ `docker-compose -f docker-compose.yaml  up --build -d`
+$ docker-compose -f docker-compose.yaml  up --build -d
 
-$ `docker tag simple-go-service_app <Your-DockerRepositry-Name>/simple-go-service_app`
+$ docker tag simple-go-service_app <Your-DockerRepositry-Name>/simple-go-service_app
 
-$ `docker push <Your-DockerRepositry-Name>/simple-go-service_app`
+$ docker push <Your-DockerRepositry-Name>/simple-go-service_app
 
 Use following steps to deploy app in k3s cluster:
 
-$ `helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace`
+$ helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
 
-$ `kubectl apply -f k8s/deployment`
+$ kubectl apply -f k8s/deployment
 
 ###  HELM  ( Manual Process )
 
 Use following steps to build app:
 
-$ `docker-compose -f docker-compose.yaml  up --build -d`
+$ docker-compose -f docker-compose.yaml  up --build -d
 
-$ `docker tag simple-go-service_app <Your-DockerRepositry-Name>/simple-go-service_app`
+$ docker tag simple-go-service_app <Your-DockerRepositry-Name>/simple-go-service_app
 
-$ `docker push <Your-DockerRepositry-Name>/simple-go-service_app`
+$ docker push <Your-DockerRepositry-Name>/simple-go-service_app
 
 Use following steps to deploy app in k3s cluster:
 
-$ `helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace`
+$ helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
 
-$ `helm upgrade --install golang-app  helm/golang-app/ --set image.repository="<Your-DockerRepositry-Name>"/simple-go-service_app,image.tag=latest`
+$ helm upgrade --install golang-app  helm/golang-app/ --set image.repository="<Your-DockerRepositry-Name>"/simple-go-service_app,image.tag=latest
 
-$ `helm upgrade --install postgres-app  helm/postgres-app/ --set image.repository="<Your-DockerRepositry-Name>"/simple-go-service_app,image.tag=14.2-alpine`
+$ helm upgrade --install postgres-app  helm/postgres-app/ --set image.repository="<Your-DockerRepositry-Name>"/simple-go-service_app,image.tag=14.2-alpine
 
 ## How to Access Application
 
