@@ -1,6 +1,6 @@
 ## How to Run Application
 
-$ `go run main.go` ( CLI )
+$ go run main.go
 
 Env variable:- Specify Golang and Postgres Database related variables in .env file 
 
@@ -11,7 +11,7 @@ Setup the env variable in the specified format to start the application.
     Example:
     DATABASE_URL="host=localhost port=5432 user=admin password=password dbname=my_db sslmode=disable pool_min_conns=5 pool_max_conns=10"
 
-$ `docker-compose -f docker-compose.yaml  up --build -d`
+$ docker-compose -f docker-compose.yaml  up --build -d
 
 
 ## Make sure that following Pre Requisite tools is running on your local or remote machine.
